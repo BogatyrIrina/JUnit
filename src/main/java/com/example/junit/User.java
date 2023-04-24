@@ -3,25 +3,29 @@ package com.example.junit;
 import java.util.Objects;
 
 public class User {
-    private String login;
+    private String name;
     private String email;
 
     public User() {
     }
 
-    public User(String login, String email) throws IllegalArgumentException {
-        if (login.equals(email)) {
-            throw new IllegalArgumentException("Login is the same as email");
+    public User(String name) {
+        this.name = name;
+    }
+
+    public User(String name, String email) throws IllegalArgumentException {
+        if (name.equals(email)) {
+            throw new IllegalArgumentException("Name is the same as email");
         }
-        this.login = login;
+        this.name = name;
         if (email == null || !email.contains("@") || !email.contains(".")) {
             throw new IllegalArgumentException("Incorrect email");
         }
         this.email = email;
     }
 
-    public String getLogin() {
-        return login;
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {
@@ -33,11 +37,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(login, user.login) && Objects.equals(email, user.email);
+        return Objects.equals(name, user.name) && Objects.equals(email, user.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(login, email);
+        return Objects.hash(name, email);
     }
 }
