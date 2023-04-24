@@ -44,4 +44,12 @@ public class UserTest {
         User user = new User("login", "myemail@mail.ru");
         Assertions.assertEquals("myemail@mail.ru", user.getEmail());
     }
+    @Test
+    public void shouldNotValidUserParametersTrowException(){
+        Assertions.assertThrows (IllegalArgumentException.class, () -> new User("login", "myemail@mail.ru"));
+    }
+    @Test
+    public void shouldNotValidUserWithoutParametersTrowException(){
+        Assertions.assertThrows (IllegalArgumentException.class, () -> new User());
+    }
 }
